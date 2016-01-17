@@ -25,6 +25,10 @@
                 <value>org.pulem3t.crm.entry.Customer</value>
                 <value>org.pulem3t.crm.entry.Manager</value>
                 <value>org.pulem3t.crm.entry.Vendor</value>
+                <value>org.pulem3t.crm.entry.Company</value>
+                <value>org.pulem3t.crm.entry.Order</value>
+                <value>org.pulem3t.crm.entry.OrderItem</value>
+                <value>org.pulem3t.crm.entry.Product</value>
             </list>
         </property>
         <property name="hibernateProperties">

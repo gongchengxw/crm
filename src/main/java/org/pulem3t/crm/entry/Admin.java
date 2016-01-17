@@ -35,8 +35,6 @@ public class Admin implements Serializable {
 	
 	public Admin() {
 		this.id = System.currentTimeMillis();
-		this.firstName = "";
-		this.lastName = "";
 		this.role = "admin";
 		this.creationDate = new Date();
 	}

@@ -44,8 +44,6 @@ public class Manager implements Serializable {
 	
 	public Manager() {
 		this.id = System.currentTimeMillis();
-		this.firstName = "";
-		this.lastName = "";
 		this.role = "manager";
 		this.creationDate = new Date();
 	}

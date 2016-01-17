@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "VENDORS")
-public class Vendor implements Serializable {
+@Table(name = "COMPANIES")
+public class Company implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -21,14 +21,14 @@ public class Vendor implements Serializable {
 	@Column(name = "ID")
 	private Long id;
 	
-	@Column(name = "FIRST_NAME")
-	private String firstName;
+	@Column(name = "NAME")
+	private String name;
 	
-	@Column(name = "LAST_NAME")
-	private String lastName;
+	@Column(name = "DESCRIPTION")
+	private String description;
 	
-	@Column(name = "ROLE")
-	private String role;
+	@Column(name = "VENDOR_ID")
+	private Long vendorId;
 	
 	@Column(name = "CREATION_DATE")
 	private Date creationDate;
@@ -54,52 +54,42 @@ public class Vendor implements Serializable {
 	@Column(name = "ZIP_POST_CODE")
 	private String zipPostCode;
 	
-	@Column(name = "COMPANY_ID")
-	private Long companyId;
-		
-	@Column(name = "LAST_VISIT")
-	private Date lastVisit;
+	@Column(name = "CATEGORY")
+	private String category;
 	
-	public Vendor() {
+	public Company() {
 		this.id = System.currentTimeMillis();
-		this.role = "vendor";
 		this.creationDate = new Date();
 	}
 	
-	public Vendor(String fn, String ln) {
+	public Company(String name) {
 		this.id = System.currentTimeMillis();
-		this.firstName = fn;
-		this.lastName = ln;
-		this.role = "vendor";
+		this.name = name;
 		this.creationDate = new Date();
 	}
 
-	public Long getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public String getDescription() {
+		return description;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public Long getVendorId() {
+		return vendorId;
 	}
 
-	public String getRole() {
-		return role;
-	}
-	
-	public void setRole(String role) {
-		this.role = role;
+	public void setVendorId(Long vendorId) {
+		this.vendorId = vendorId;
 	}
 
 	public String getAddress() {
@@ -158,20 +148,16 @@ public class Vendor implements Serializable {
 		this.zipPostCode = zipPostCode;
 	}
 
-	public Long getCompanyId() {
-		return companyId;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
-	public Date getLastVisit() {
-		return lastVisit;
-	}
-
-	public void setLastVisit(Date lastVisit) {
-		this.lastVisit = lastVisit;
+	public Long getId() {
+		return id;
 	}
 
 	public Date getCreationDate() {

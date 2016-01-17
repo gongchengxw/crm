@@ -63,8 +63,6 @@ public class Customer implements Serializable {
 	
 	public Customer() {
 		this.id = System.currentTimeMillis();
-		this.firstName = "";
-		this.lastName = "";
 		this.role = "customer";
 		this.creationDate = new Date();
 	}
