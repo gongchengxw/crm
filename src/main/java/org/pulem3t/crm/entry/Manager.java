@@ -4,6 +4,7 @@
 package org.pulem3t.crm.entry;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,18 +28,34 @@ public class Manager implements Serializable {
 	private String lastName;
 	
 	@Column(name = "ROLE")
-	private int role;
+	private String role;
+
+	@Column(name = "CREATION_DATE")
+	private Date creationDate;	
+	
+	@Column(name = "PHONE")
+	private String phone;
+	
+	@Column(name = "FAX")
+	private String fax;
+	
+	@Column(name = "LAST_VISIT")
+	private Date lastVisit;
 	
 	public Manager() {
 		this.id = System.currentTimeMillis();
-		this.role = 1;
+		this.firstName = "";
+		this.lastName = "";
+		this.role = "manager";
+		this.creationDate = new Date();
 	}
 	
 	public Manager(String fn, String ln) {
 		this.id = System.currentTimeMillis();
 		this.firstName = fn;
 		this.lastName = ln;
-		this.role = 1;
+		this.role = "manager";
+		this.creationDate = new Date();
 	}
 
 	public Long getId() {
@@ -61,11 +78,39 @@ public class Manager implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public int getRole() {
+	public String getRole() {
 		return role;
 	}
 	
-	public void setRole(int i) {
-		this.role = i;
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public Date getLastVisit() {
+		return lastVisit;
+	}
+
+	public void setLastVisit(Date lastVisit) {
+		this.lastVisit = lastVisit;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
 	}
 }

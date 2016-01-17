@@ -4,6 +4,7 @@
 package org.pulem3t.crm.entry;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,18 +28,25 @@ public class Admin implements Serializable {
 	private String lastName;
 	
 	@Column(name = "ROLE")
-	private int role;
+	private String role;
+	
+	@Column(name = "CREATION_DATE")
+	private Date creationDate;
 	
 	public Admin() {
 		this.id = System.currentTimeMillis();
-		this.role = 1;
+		this.firstName = "";
+		this.lastName = "";
+		this.role = "admin";
+		this.creationDate = new Date();
 	}
 	
 	public Admin(String fn, String ln) {
 		this.id = System.currentTimeMillis();
 		this.firstName = fn;
 		this.lastName = ln;
-		this.role = 1;
+		this.role = "admin";
+		this.creationDate = new Date();
 	}
 
 	public Long getId() {
@@ -61,11 +69,15 @@ public class Admin implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public int getRole() {
+	public String getRole() {
 		return role;
 	}
 	
-	public void setRole(int i) {
-		this.role = i;
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
 	}
 }
