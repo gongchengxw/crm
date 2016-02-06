@@ -8,8 +8,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.pulem3t.crm.enums.OrderStatus;
 
 @Entity
 @Table(name = "ORDERS")
@@ -36,9 +40,13 @@ public class Order implements Serializable {
 	@Column(name = "DELIVERY_ADDRESS")
 	private String deliveryAddress;
 	
+	@Enumerated(EnumType.STRING)
+	private OrderStatus status;
+	
 	public Order() {
 		this.id = System.currentTimeMillis();
 		this.creationDate = new Date();
+		this.status = OrderStatus.PLACED;
 	}
 	
 	public Order(Long customerId, Long managerId, Double amount, String deliveryAddress) {
@@ -48,6 +56,7 @@ public class Order implements Serializable {
 		this.amount = amount;
 		this.deliveryAddress = deliveryAddress;
 		this.creationDate = new Date();
+		this.status = OrderStatus.PLACED;
 	}
 
 	public Long getId() {
@@ -81,8 +90,20 @@ public class Order implements Serializable {
 	public Long getCustomerId() {
 		return customerId;
 	}
+	
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
 
 	public Date getCreationDate() {
 		return creationDate;
+	}
+
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
 	}
 }

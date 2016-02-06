@@ -20,7 +20,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	private Session session = null;
 	private Transaction tx = null;
 	
-	
+	@Override
 	public List<Customer> getCustomers() {
 		
 		session = sessionFactory.openSession();
@@ -33,6 +33,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return customerList;
 	}
 
+	@Override
 	public Customer getCustomer(Long id) {
 		
 		
@@ -46,6 +47,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return customer;
 	}
 
+	@Override
 	public Long addCustomer(Customer customer) {
 		
 		session = sessionFactory.openSession();
@@ -58,6 +60,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return customer.getId();
 	}
 
+	@Override
 	public void delCustomer(Long id) {
 		
 		session = sessionFactory.openSession();
@@ -69,6 +72,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		session.close();
 	}
 
+	@Override
 	public void updateCustomer(Customer customer) {
 		
 		session = sessionFactory.openSession();

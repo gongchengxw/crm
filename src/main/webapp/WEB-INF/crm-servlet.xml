@@ -50,4 +50,5 @@
     <bean id="customerDao" class="org.pulem3t.crm.dao.impl.CustomerDAOImpl" />
     <bean id="managerDao" class="org.pulem3t.crm.dao.impl.ManagerDAOImpl" />
     <bean id="vendorDao" class="org.pulem3t.crm.dao.impl.VendorDAOImpl" />
+    <bean id="orderDao" class="org.pulem3t.crm.dao.impl.OrderDAOImpl" />
   </beans>

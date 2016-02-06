@@ -20,7 +20,7 @@ public class VendorDAOImpl implements VendorDAO {
 	private Session session = null;
 	private Transaction tx = null;
 	
-	
+	@Override
 	public List<Vendor> getVendors() {
 		
 		session = sessionFactory.openSession();
@@ -33,6 +33,7 @@ public class VendorDAOImpl implements VendorDAO {
 		return vendorList;
 	}
 
+	@Override
 	public Vendor getVendor(Long id) {
 		
 		
@@ -46,6 +47,7 @@ public class VendorDAOImpl implements VendorDAO {
 		return vendor;
 	}
 
+	@Override
 	public Long addVendor(Vendor vendor) {
 		
 		session = sessionFactory.openSession();
@@ -58,6 +60,7 @@ public class VendorDAOImpl implements VendorDAO {
 		return vendor.getId();
 	}
 
+	@Override
 	public void delVendor(Long id) {
 		
 		session = sessionFactory.openSession();
@@ -69,6 +72,7 @@ public class VendorDAOImpl implements VendorDAO {
 		session.close();
 	}
 
+	@Override
 	public void updateVendor(Vendor vendor) {
 		
 		session = sessionFactory.openSession();

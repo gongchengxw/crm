@@ -20,7 +20,7 @@ public class AdminDAOImpl implements AdminDAO {
 	private Session session = null;
 	private Transaction tx = null;
 	
-	
+	@Override
 	public List<Admin> getAdmins() {
 		
 		session = sessionFactory.openSession();
@@ -33,6 +33,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return adminList;
 	}
 
+	@Override
 	public Admin getAdmin(Long id) {
 		
 		
@@ -46,6 +47,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return admin;
 	}
 
+	@Override
 	public Long addAdmin(Admin admin) {
 		
 		session = sessionFactory.openSession();
@@ -58,6 +60,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return admin.getId();
 	}
 
+	@Override
 	public void delAdmin(Long id) {
 		
 		session = sessionFactory.openSession();
@@ -69,6 +72,7 @@ public class AdminDAOImpl implements AdminDAO {
 		session.close();
 	}
 
+	@Override
 	public void updateAdmin(Admin admin) {
 		
 		session = sessionFactory.openSession();
