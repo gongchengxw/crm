@@ -24,10 +24,9 @@ public class DelOrderController {
 	@RequestMapping(value="/delOrder/{id}", method=RequestMethod.GET)
 	public @ResponseBody String delOrder(@PathVariable("id") Long id) {
 		
-		logger.info("ORDERS: Deleting order with id=" + id);
-
 		try {
 			orderDAO.delOrder(id);
+			logger.info("ORDERS: Deleted order with id=" + id);
 			return "Deleted order with id=" + id;
 		} catch (Exception e) {
 			e.printStackTrace();

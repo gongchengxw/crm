@@ -10,10 +10,12 @@ import org.apache.log4j.Logger;
 import org.pulem3t.crm.dao.AdminDAO;
 import org.pulem3t.crm.dao.CustomerDAO;
 import org.pulem3t.crm.dao.ManagerDAO;
+import org.pulem3t.crm.dao.OrderDAO;
 import org.pulem3t.crm.dao.VendorDAO;
 import org.pulem3t.crm.entry.Admin;
 import org.pulem3t.crm.entry.Customer;
 import org.pulem3t.crm.entry.Manager;
+import org.pulem3t.crm.entry.Order;
 import org.pulem3t.crm.entry.Vendor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,12 +37,13 @@ public class ClearBaseController {
 	private ManagerDAO managerDAO;
 	@Autowired
 	private VendorDAO vendorDAO;
+	@Autowired
+	private OrderDAO orderDAO;
 
 	@RequestMapping(value="/clear", method=RequestMethod.GET)
 	public @ResponseBody String clear() {
 		
-		logger.info("BASE: Clearing base");
-
+		Long startTime = System.currentTimeMillis();
 		try {
 			List<Admin> adminList = adminDAO.getAdmins();
 			Iterator<Admin> itAdmin = adminList.iterator();
@@ -65,7 +68,16 @@ public class ClearBaseController {
 			while(itVendor.hasNext()) {
 				vendorDAO.delVendor(itVendor.next().getId());
 			}
-			return "Base cleared";
+			
+			List<Order> orderList = orderDAO.getOrders();
+			Iterator<Order> itOrder = orderList.iterator();
+			while(itOrder.hasNext()) {
+				orderDAO.delOrder(itOrder.next().getId());
+			}
+			Long clearTime = System.currentTimeMillis() - startTime;
+			
+			logger.info("BASE: Base cleared in " + clearTime + " ms");
+			return "Base cleared in " + clearTime + " ms";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

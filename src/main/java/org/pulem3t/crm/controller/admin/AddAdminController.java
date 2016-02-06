@@ -25,12 +25,11 @@ public class AddAdminController {
 
 	@RequestMapping(value="/addAdmin", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String addAdmin(@RequestBody Admin admin) {
-		
-		logger.info("ADMINS: Adding admin with id=" + admin.getId());
-		
+
 		try {
-			adminDAO.addAdmin(admin);
-			return "Added admin with id=" + admin.getId();
+			Long id = adminDAO.addAdmin(admin);
+			logger.info("ADMINS: Added admin with id = " + id);
+			return "Added admin with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

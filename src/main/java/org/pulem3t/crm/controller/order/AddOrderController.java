@@ -26,11 +26,10 @@ public class AddOrderController {
 	@RequestMapping(value="/addOrder", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String addOrder(@RequestBody Order order) {
 		
-		logger.info("ORDERS: Adding order with id=" + order.getId());
-		
 		try {
-			orderDAO.addOrder(order);
-			return "Added order with id=" + order.getId();
+			Long id = orderDAO.addOrder(order);
+			logger.info("ORDERS: Added order with id = " + id);
+			return "Added order with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

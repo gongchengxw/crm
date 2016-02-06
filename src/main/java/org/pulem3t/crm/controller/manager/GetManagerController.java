@@ -26,8 +26,6 @@ public class GetManagerController {
 	@RequestMapping(value="/getManager/{id}", method=RequestMethod.GET)
 	public @ResponseBody String getManager(@PathVariable("id") Long id) {
 		
-		logger.info("MANAGERS: Getting manager with id=" + id);
-		
 		try {
 			Manager manager = managerDAO.getManager(id);
 			JSONObject o = new JSONObject();
@@ -35,6 +33,7 @@ public class GetManagerController {
 			o.put("firstName", manager.getFirstName());
 			o.put("lastName", manager.getLastName());
 			o.put("role", manager.getRole());
+			logger.info("MANAGERS: Got manager with id = " + id);
 			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();

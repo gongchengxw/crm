@@ -24,9 +24,7 @@ public class GetAdminController {
 	private AdminDAO adminDAO;
 
 	@RequestMapping(value="/getAdmin/{id}", method=RequestMethod.GET)
-	public @ResponseBody String getAdmin(@PathVariable("id") Long id) {
-		
-		logger.info("ADMINS: Getting admin with id=" + id);
+	public @ResponseBody String getAdmin(@PathVariable("id") Long id) {	
 		
 		try {
 			Admin admin = adminDAO.getAdmin(id);
@@ -35,6 +33,7 @@ public class GetAdminController {
 			o.put("firstName", admin.getFirstName());
 			o.put("lastName", admin.getLastName());
 			o.put("role", admin.getRole());
+			logger.info("ADMINS: Got admin with id = " + id);
 			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();

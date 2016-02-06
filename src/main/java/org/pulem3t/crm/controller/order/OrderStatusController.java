@@ -6,31 +6,33 @@ package org.pulem3t.crm.controller.order;
 import org.apache.log4j.Logger;
 import org.pulem3t.crm.dao.OrderDAO;
 import org.pulem3t.crm.entry.Order;
+import org.pulem3t.crm.enums.OrderStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/orders")
-public class UpdateOrderController {
+public class OrderStatusController {
 	
-	protected static Logger logger = Logger.getLogger("UpdateOrderController");
+	protected static Logger logger = Logger.getLogger("OrderStatusController");
 
 	@Autowired
 	private OrderDAO orderDAO;
 	
-	@RequestMapping(value="/updateOrder", method=RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody String updateOrder(@RequestBody Order order) {
-		
-		logger.info("ORDERS: Update order with id=" + order.getId());
-		
+	@RequestMapping(value="/changeOrderStatus", method=RequestMethod.GET)
+	public @ResponseBody String updateOrder(@RequestParam(value = "orderId", required = true) Long id,
+			@RequestParam(value = "newStatus", required = true) OrderStatus status) {
+
 		try {
+			Order order = orderDAO.getOrder(id);
+			order.setStatus(status);
 			orderDAO.updateOrder(order);
-			return "Updated order with id = " + order.getId();
+			logger.info("ORDERS: Changed order status with id = " + id);
+			return "Changed order status with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

@@ -26,8 +26,6 @@ public class GetOrderController {
 	@RequestMapping(value="/getOrder/{id}", method=RequestMethod.GET)
 	public @ResponseBody String getOrder(@PathVariable("id") Long id) {
 		
-		logger.info("ORDERS: Getting order with id=" + id);
-		
 		try {
 			Order order = orderDAO.getOrder(id);
 			JSONObject o = new JSONObject();
@@ -38,6 +36,7 @@ public class GetOrderController {
 			o.put("amount", order.getAmount());
 			o.put("status", order.getStatus());
 			o.put("creationDate", order.getCreationDate());
+			logger.info("ORDERS: Got order with id = " + id);
 			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();

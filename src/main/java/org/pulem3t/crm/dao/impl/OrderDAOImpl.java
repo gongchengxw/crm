@@ -113,6 +113,7 @@ public class OrderDAOImpl implements OrderDAO {
 		oldOrder.setManagerId(order.getManagerId());
 		oldOrder.setAmount(order.getAmount());
 		oldOrder.setDeliveryAddress(order.getDeliveryAddress());
+		oldOrder.setStatus(order.getStatus());
 		tx = session.getTransaction();
 		session.beginTransaction();
 		session.save(oldOrder);

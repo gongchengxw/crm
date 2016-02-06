@@ -25,9 +25,7 @@ public class GetCustomerController {
 
 	@RequestMapping(value="/getCustomer/{id}", method=RequestMethod.GET)
 	public @ResponseBody String getCustomer(@PathVariable("id") Long id) {
-		
-		logger.info("CUSTOMERS: Getting customer with id=" + id);
-		
+
 		try {
 			Customer customer = customerDAO.getCustomer(id);
 			JSONObject o = new JSONObject();
@@ -35,6 +33,7 @@ public class GetCustomerController {
 			o.put("firstName", customer.getFirstName());
 			o.put("lastName", customer.getLastName());
 			o.put("role", customer.getRole());
+			logger.info("CUSTOMERS: Got customer with id = " + id);
 			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();

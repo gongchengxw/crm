@@ -25,12 +25,11 @@ public class AddManagerController {
 
 	@RequestMapping(value="/addManager", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String addManager(@RequestBody Manager manager) {
-		
-		logger.info("MANAGERS: Adding manager with id=" + manager.getId());
-		
+
 		try {
-			managerDAO.addManager(manager);
-			return "Added manager with id=" + manager.getId();
+			Long id = managerDAO.addManager(manager);
+			logger.info("MANAGERS: Added manager with id = " + id);
+			return "Added manager with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

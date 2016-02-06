@@ -24,7 +24,7 @@ public class DelVendorController {
 	@RequestMapping(value="/delVendor/{id}", method=RequestMethod.GET)
 	public @ResponseBody String delVendor(@PathVariable("id") Long id) {
 		
-		logger.info("USERS: Deleting vendor with id=" + id);
+		logger.info("VENDORS: Deleting vendor with id=" + id);
 
 		try {
 			vendorDAO.delVendor(id);

@@ -25,12 +25,11 @@ public class AddCustomerController {
 
 	@RequestMapping(value="/addCustomer", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String addCustomer(@RequestBody Customer customer) {
-		
-		logger.info("CUSTOMERS: Adding customer with id=" + customer.getId());
-		
+
 		try {
-			customerDAO.addCustomer(customer);
-			return "Added customer with id=" + customer.getId();
+			Long id = customerDAO.addCustomer(customer);
+			logger.info("CUSTOMERS: Added customer with id = " + id);
+			return "Added customer with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

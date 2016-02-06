@@ -24,11 +24,10 @@ public class DelAdminController {
 	@RequestMapping(value="/delAdmin/{id}", method=RequestMethod.GET)
 	public @ResponseBody String delAdmin(@PathVariable("id") Long id) {
 		
-		logger.info("ADMINS: Deleting admin with id=" + id);
-
 		try {
 			adminDAO.delAdmin(id);
-			return "Deleted admin with id=" + id;
+			logger.info("ADMINS: Deleted admin with id = " + id);
+			return "Deleted admin with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

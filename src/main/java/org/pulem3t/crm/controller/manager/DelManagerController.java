@@ -24,11 +24,10 @@ public class DelManagerController {
 	@RequestMapping(value="/delManager/{id}", method=RequestMethod.GET)
 	public @ResponseBody String delManager(@PathVariable("id") Long id) {
 		
-		logger.info("MANAGERS: Deleting manager with id=" + id);
-
 		try {
 			managerDAO.delManager(id);
-			return "Deleted manager with id=" + id;
+			logger.info("MANAGERS: Deleted manager with id = " + id);
+			return "Deleted manager with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

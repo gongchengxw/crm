@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/orders")
-public class GetOrdersControllerByUserId {
+public class GetOrdersByUserIdController {
 
 	@Autowired
 	private OrderDAO orderDAO;

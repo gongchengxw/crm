@@ -24,11 +24,10 @@ public class DelCustomerController {
 	@RequestMapping(value="/delCustomer/{id}", method=RequestMethod.GET)
 	public @ResponseBody String delCustomer(@PathVariable("id") Long id) {
 		
-		logger.info("CUSTOMERS: Deleting customer with id=" + id);
-
 		try {
 			customerDAO.delCustomer(id);
-			return "Deleted customer with id=" + id;
+			logger.info("CUSTOMERS: Deleted customer with id = " + id);
+			return "Deleted customer with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

@@ -25,12 +25,11 @@ public class AddVendorController {
 
 	@RequestMapping(value="/addVendor", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String addVendor(@RequestBody Vendor vendor) {
-		
-		logger.info("USERS: Adding vendor with id=" + vendor.getId());
-		
+
 		try {
-			vendorDAO.addVendor(vendor);
-			return "Added vendor with id=" + vendor.getId();
+			Long id = vendorDAO.addVendor(vendor);
+			logger.info("VENDORS: Added vendor with id = " + id);
+			return "Added vendor with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

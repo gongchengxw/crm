@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.pulem3t.crm.dao.AdminDAO;
 import org.pulem3t.crm.entry.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ public class UpdateAdminController {
 	@Autowired
 	private AdminDAO adminDAO;
 	
-	@RequestMapping(value="/updateAdmin", method=RequestMethod.POST)
+	@RequestMapping(value="/updateAdmin", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateAdmin(@RequestBody Admin admin) {
 		
 		logger.info("ADMINS: Update admin with id=" + admin.getId());
