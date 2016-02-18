@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/vendors")
 public class UpdateVendorController {
 	
-	protected static Logger logger = Logger.getLogger("GetVendorController");
+	protected static Logger logger = Logger.getLogger("UpdateVendorController");
 
 	@Autowired
 	private VendorDAO vendorDAO;
@@ -26,7 +26,7 @@ public class UpdateVendorController {
 	@RequestMapping(value="/updateVendor", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateVendor(@RequestBody Vendor vendor) {
 		
-		logger.info("VENDORS: Update vendor with id=" + vendor.getId());
+		logger.info("VENDORS: Update vendor with id = " + vendor.getId());
 		
 		try {
 			vendorDAO.updateVendor(vendor);

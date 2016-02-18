@@ -1,10 +1,10 @@
 /**
  * @author pulem3t
  */
-package org.pulem3t.crm.controller.vendor;
+package org.pulem3t.crm.controller.company;
 
 import org.apache.log4j.Logger;
-import org.pulem3t.crm.dao.VendorDAO;
+import org.pulem3t.crm.dao.CompanyDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/vendors")
-public class DelVendorController {
+@RequestMapping("/companies")
+public class DelCompanyController {
 	
-	protected static Logger logger = Logger.getLogger("DelVendorController");
+	protected static Logger logger = Logger.getLogger("DelCompanyController");
 	
 	@Autowired
-	private VendorDAO vendorDAO;
+	private CompanyDAO companyDAO;
 
-	@RequestMapping(value="/delVendor/{id}", method=RequestMethod.GET)
-	public @ResponseBody String delVendor(@PathVariable("id") Long id) {
+	@RequestMapping(value="/delCompany/{id}", method=RequestMethod.GET)
+	public @ResponseBody String delCompany(@PathVariable("id") Long id) {
 		
-		logger.info("VENDORS: Deleting vendor with id = " + id);
+		logger.info("COMPANIES: Deleting company with id = " + id);
 
 		try {
-			vendorDAO.delVendor(id);
-			return "Deleted vendor with id=" + id;
+			companyDAO.delCompany(id);
+			return "Deleted company with id = " + id;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

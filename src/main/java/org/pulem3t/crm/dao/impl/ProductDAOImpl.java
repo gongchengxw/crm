@@ -8,11 +8,11 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.pulem3t.crm.dao.VendorDAO;
-import org.pulem3t.crm.entry.Vendor;
+import org.pulem3t.crm.dao.ProductDAO;
+import org.pulem3t.crm.entry.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class VendorDAOImpl implements VendorDAO {
+public class ProductDAOImpl implements ProductDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -21,76 +21,74 @@ public class VendorDAOImpl implements VendorDAO {
 	private Transaction tx = null;
 	
 	@Override
-	public List<Vendor> getVendors() {
+	public List<Product> getProducts() {
 		
 		session = sessionFactory.openSession();
 		tx = session.getTransaction();
 		session.beginTransaction();
-		List<Vendor> vendorList = session.createCriteria(Vendor.class).list();
+		List<Product> productList = session.createCriteria(Product.class).list();
 		tx.commit();
 		session.close();
 		
-		return vendorList;
+		return productList;
 	}
 
 	@Override
-	public Vendor getVendor(Long id) {
+	public Product getProduct(Long id) {
 		
 		
 		session = sessionFactory.openSession();
-		Vendor vendor = (Vendor) session.get(Vendor.class, new Long(id));
+		Product product = (Product) session.get(Product.class, new Long(id));
 		tx = session.getTransaction();
 		session.beginTransaction();
 		tx.commit();
 		session.close();
 		
-		return vendor;
+		return product;
 	}
 
 	@Override
-	public Long addVendor(Vendor vendor) {
+	public Long addProduct(Product product) {
 		
 		session = sessionFactory.openSession();
 		tx = session.getTransaction();
 		session.beginTransaction();
-		session.save(vendor);
+		session.save(product);
 		tx.commit();
 		session.close();
 		
-		return vendor.getId();
+		return product.getId();
 	}
 
 	@Override
-	public void delVendor(Long id) {
+	public void delProduct(Long id) {
 		
 		session = sessionFactory.openSession();
-		Vendor vendor = (Vendor) session.load(Vendor.class, new Long(id));
+		Product product = (Product) session.load(Product.class, new Long(id));
 		tx = session.getTransaction();
 		session.beginTransaction();
-		session.delete(vendor);
+		session.delete(product);
 		tx.commit();
 		session.close();
 	}
 
 	@Override
-	public void updateVendor(Vendor vendor) {
+	public void updateProduct(Product product) {
 		
 		session = sessionFactory.openSession();
 		
-		Vendor oldVendor = (Vendor) session.get(Vendor.class, vendor.getId());
-		oldVendor.setFirstName(vendor.getFirstName());
-		oldVendor.setLastName(vendor.getLastName());
-		oldVendor.setRole(vendor.getRole());
-		oldVendor.setAddress(vendor.getAddress());
-		oldVendor.setPhone(vendor.getPhone());
-		oldVendor.setFax(vendor.getFax());
-		oldVendor.setCountry(vendor.getCountry());
-		oldVendor.setCity(vendor.getCity());
-		oldVendor.setState(vendor.getState());
-		oldVendor.setZipPostCode(vendor.getZipPostCode());
+		Product oldProduct = (Product) session.get(Product.class, product.getId());
+		oldProduct.setName(product.getName());
+		oldProduct.setCategory(product.getCategory());
+		oldProduct.setPrice(product.getPrice());
+		oldProduct.setCompanyId(product.getCompanyId());
+		oldProduct.setQuantity(product.getQuantity());
+		oldProduct.setWeight(product.getWeight());
+		oldProduct.setDescription(product.getDescription());
+		oldProduct.setTags(product.getTags());
 		tx = session.getTransaction();
 		session.beginTransaction();
-		session.save(oldVendor);
+		session.save(oldProduct);
 		tx.commit();
 		session.close();
 	}

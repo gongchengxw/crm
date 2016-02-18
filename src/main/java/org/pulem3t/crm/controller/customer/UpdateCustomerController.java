@@ -26,7 +26,7 @@ public class UpdateCustomerController {
 	@RequestMapping(value="/updateCustomer", method=RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateCustomer(@RequestBody Customer customer) {
 		
-		logger.info("CUSTOMERS: Update customer with id=" + customer.getId());
+		logger.info("CUSTOMERS: Update customer with id = " + customer.getId());
 		
 		try {
 			customerDAO.updateCustomer(customer);

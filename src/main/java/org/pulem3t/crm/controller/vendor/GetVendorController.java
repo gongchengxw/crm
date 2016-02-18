@@ -26,7 +26,7 @@ public class GetVendorController {
 	@RequestMapping(value="/getVendor/{id}", method=RequestMethod.GET)
 	public @ResponseBody String getVendor(@PathVariable("id") Long id) {
 		
-		logger.info("VENDORS: Getting vendor with id=" + id);
+		logger.info("VENDORS: Getting vendor with id = " + id);
 		
 		try {
 			Vendor vendor = vendorDAO.getVendor(id);
