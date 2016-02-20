@@ -25,11 +25,10 @@ public class UpdateCompanyController {
 	
 	@RequestMapping(value="/updateCompany", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateCompany(@RequestBody Company company) {
-		
-		logger.info("COMPANIES: Update company with id = " + company.getId());
-		
+
 		try {
 			companyDAO.updateCompany(company);
+			logger.info("COMPANIES: Updated company with id = " + company.getId());
 			return "Updated company with id = " + company.getId();
 		} catch (Exception e) {
 			e.printStackTrace();

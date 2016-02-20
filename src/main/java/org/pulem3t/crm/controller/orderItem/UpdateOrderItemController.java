@@ -25,11 +25,10 @@ public class UpdateOrderItemController {
 	
 	@RequestMapping(value="/updateOrderItem", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateOrderItem(@RequestBody OrderItem orderItem) {
-		
-		logger.info("ORDER_ITEM: Update orderItem with id = " + orderItem.getId());
-		
+
 		try {
 			orderItemDAO.updateOrderItem(orderItem);
+			logger.info("ORDER_ITEM: Update orderItem with id = " + orderItem.getId());
 			return "Updated orderItem with id = " + orderItem.getId();
 		} catch (Exception e) {
 			e.printStackTrace();

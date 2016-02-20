@@ -25,11 +25,10 @@ public class UpdateCustomerController {
 	
 	@RequestMapping(value="/updateCustomer", method=RequestMethod.POST,  consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateCustomer(@RequestBody Customer customer) {
-		
-		logger.info("CUSTOMERS: Update customer with id = " + customer.getId());
-		
+
 		try {
 			customerDAO.updateCustomer(customer);
+			logger.info("CUSTOMERS: Updated customer with id = " + customer.getId());
 			return "Updated customer with id = " + customer.getId();
 		} catch (Exception e) {
 			e.printStackTrace();

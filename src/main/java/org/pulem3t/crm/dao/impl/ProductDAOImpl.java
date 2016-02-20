@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.pulem3t.crm.dao.ProductDAO;
 import org.pulem3t.crm.entry.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +92,20 @@ public class ProductDAOImpl implements ProductDAO {
 		session.save(oldProduct);
 		tx.commit();
 		session.close();
+	}
+
+	@Override
+	public List<Product> getProductsByCompanyId(Long companyId) {
+		
+		session = sessionFactory.openSession();
+		tx = session.getTransaction();
+		session.beginTransaction();
+		List<Product> productList = session.createCriteria(Product.class).add(Restrictions.eq("companyId", new Long(companyId))).list();
+		tx.commit();
+		session.close();
+		
+		return productList;
+		
 	}
 
 }

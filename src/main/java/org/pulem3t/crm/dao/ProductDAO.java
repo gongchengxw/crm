@@ -18,4 +18,6 @@ public interface ProductDAO {
 	public void delProduct(Long id);
 	
 	public void updateProduct(Product product);
+	
+	public List<Product> getProductsByCompanyId(Long companyId);
 }

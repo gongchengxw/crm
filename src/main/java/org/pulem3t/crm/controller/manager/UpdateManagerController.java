@@ -25,11 +25,10 @@ public class UpdateManagerController {
 	
 	@RequestMapping(value="/updateManager", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateManager(@RequestBody Manager manager) {
-		
-		logger.info("MANAGERS: Update manager with id=" + manager.getId());
-		
+
 		try {
 			managerDAO.updateManager(manager);
+			logger.info("MANAGERS: Updated manager with id=" + manager.getId());
 			return "Updated manager with id = " + manager.getId();
 		} catch (Exception e) {
 			e.printStackTrace();

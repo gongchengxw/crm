@@ -25,11 +25,10 @@ public class UpdateAdminController {
 	
 	@RequestMapping(value="/updateAdmin", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateAdmin(@RequestBody Admin admin) {
-		
-		logger.info("ADMINS: Update admin with id = " + admin.getId());
-		
+
 		try {
 			adminDAO.updateAdmin(admin);
+			logger.info("ADMINS: Updated admin with id = " + admin.getId());
 			return "Updated admin with id = " + admin.getId();
 		} catch (Exception e) {
 			e.printStackTrace();

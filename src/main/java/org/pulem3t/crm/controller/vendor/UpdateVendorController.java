@@ -26,10 +26,9 @@ public class UpdateVendorController {
 	@RequestMapping(value="/updateVendor", method=RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String updateVendor(@RequestBody Vendor vendor) {
 		
-		logger.info("VENDORS: Update vendor with id = " + vendor.getId());
-		
 		try {
 			vendorDAO.updateVendor(vendor);
+			logger.info("VENDORS: Updated vendor with id = " + vendor.getId());
 			return "Updated vendor with id = " + vendor.getId();
 		} catch (Exception e) {
 			e.printStackTrace();
