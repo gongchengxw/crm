@@ -1,2 +1,4 @@
 /target/
 /notes
+/.settings/
+/src/main/webapp/static/.idea/
