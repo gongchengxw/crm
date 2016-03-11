@@ -1,4 +1,25 @@
 <div class="panel panel-info">
-    <div class="panel-heading">Vendors header</div>
-    <div class="panel-body">Vendors body</div>
+    <div class="panel-heading">Vendors</div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Company</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="vendor in vendorsList">
+                    <td>{{vendor.id}}</td>
+                    <td>{{vendor.firstName}}</td>
+                    <td>{{vendor.lastName}}</td>
+                    <td>{{vendor.companyId}}</td>
+                    <td>{{vendor.creationDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

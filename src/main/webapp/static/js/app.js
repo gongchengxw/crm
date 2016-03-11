@@ -21,9 +21,9 @@ crmApp.config(['$routeProvider', '$locationProvider',
         }).when('/orders', {
             templateUrl: 'partials/main.html',
             controller: 'OrdersViewCtrl'
-        }).when('/clients', {
+        }).when('/customers', {
             templateUrl: 'partials/main.html',
-            controller: 'ClientsViewCtrl'
+            controller: 'CustomersViewCtrl'
         }).when('/vendors', {
             templateUrl: 'partials/main.html',
             controller: 'VendorsViewCtrl'

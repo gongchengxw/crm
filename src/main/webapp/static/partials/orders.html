@@ -1,4 +1,25 @@
 <div class="panel panel-info">
-    <div class="panel-heading">Orders header</div>
-    <div class="panel-body">Orders body</div>
+    <div class="panel-heading">Orders</div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer ID</th>
+                <th>Manager ID</th>
+                <th>Amount</th>
+                <th>Created</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in ordersList">
+                <td>{{order.id}}</td>
+                <td>{{order.customerId}}</td>
+                <td>{{order.managerId}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{order.creationDate}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
