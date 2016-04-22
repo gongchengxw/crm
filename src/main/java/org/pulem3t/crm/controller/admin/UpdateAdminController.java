@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.admin;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.AdminDAO;
 import org.pulem3t.crm.entry.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class UpdateAdminController {
 		try {
 			adminDAO.updateAdmin(admin);
 			logger.info("ADMINS: Updated admin with id = " + admin.getId());
-			return "Updated admin with id = " + admin.getId();
+			JSONObject o = new JSONObject();
+			o.put("Updated", admin.getId());
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

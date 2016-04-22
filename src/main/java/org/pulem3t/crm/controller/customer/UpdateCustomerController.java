@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.customer;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.CustomerDAO;
 import org.pulem3t.crm.entry.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class UpdateCustomerController {
 		try {
 			customerDAO.updateCustomer(customer);
 			logger.info("CUSTOMERS: Updated customer with id = " + customer.getId());
-			return "Updated customer with id = " + customer.getId();
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.company;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.CompanyDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,9 @@ public class DelCompanyController {
 
 		try {
 			companyDAO.delCompany(id);
-			return "Deleted company with id = " + id;
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

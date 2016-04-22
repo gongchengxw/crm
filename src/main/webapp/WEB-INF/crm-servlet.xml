@@ -9,14 +9,24 @@
   
     <context:component-scan base-package="org.pulem3t.crm.controller" />
     <mvc:annotation-driven />
-    <mvc:resources mapping="/static/**" location="/static/" />
+    <mvc:resources mapping="/crm/**" location="/static/" />
+    <mvc:resources mapping="/js/**" location="/static/js/" />
+    <mvc:resources mapping="/css/**" location="/static/css/" />
+    <mvc:resources mapping="/lib-css/**" location="/static/lib-css/" />
+    <mvc:resources mapping="/partials/**" location="/static/partials/" />
+    <mvc:resources mapping="favicon.png" location="/static/" />
+    <mvc:resources mapping="index.html" location="/static/" />
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://localhost:5432/crm_db" />
-        <property name="username" value="postgres" />
-        <property name="password" value="wwweee" />
+        <property name="url" value="${db.jdbcUrl}" />
+        <property name="username" value="${db.username}" />
+        <property name="password" value="${db.password}" />
     </bean>
+    
+   <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">    
+     <property name="location" value="classpath:config.properties">
+   </property></bean>
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />

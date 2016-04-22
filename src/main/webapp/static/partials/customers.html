@@ -1,5 +1,5 @@
 <div class="panel panel-info">
-    <div class="panel-heading">Customers</div>
+    <div class="panel-heading mainview-header">Customers<button class="btn btn-success add-button" data-toggle="modal" data-target="#addModal">Add Customer</button></div>
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
@@ -7,7 +7,7 @@
                 <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Company</th>
+                <th>Address</th>
                 <th>Created</th>
             </tr>
             </thead>
@@ -21,5 +21,35 @@
             </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div id="addModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h4 class="modal-title">Add Customer</h4>
+        </div>
+        <div class="modal-body">
+           <form id="addCustomerForm" role="form">
+            <div class="form-group">
+              <label for="firstName">First Name:</label>
+              <input class="form-control" id="firstNameAdd" ng-model="firstNameAdd">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name:</label>
+              <input class="form-control" id="lastNameAdd" ng-model="lastNameAdd">
+            </div>
+            <div class="form-group">
+                <label for="addressAdd">Address:</label>
+              <input class="form-control" id="addressAdd" ng-model="addressAdd">
+            </div>                
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="addCustomerButton" class="btn btn-success" data-dismiss="modal" ng-click="addCustomer(firstNameAdd, lastNameAdd, addressAdd)">Add Customer</button>
+        </div>
+      </div>
     </div>
 </div>

@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.order;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.OrderDAO;
 import org.pulem3t.crm.entry.Order;
 import org.pulem3t.crm.enums.OrderStatus;
@@ -32,7 +33,9 @@ public class OrderStatusController {
 			order.setStatus(status);
 			orderDAO.updateOrder(order);
 			logger.info("ORDERS: Changed order status with id = " + id);
-			return "Changed order status with id = " + id;
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

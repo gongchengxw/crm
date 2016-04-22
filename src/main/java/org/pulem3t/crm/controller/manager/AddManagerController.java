@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.manager;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.ManagerDAO;
 import org.pulem3t.crm.entry.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class AddManagerController {
 		try {
 			Long id = managerDAO.addManager(manager);
 			logger.info("MANAGERS: Added manager with id = " + id);
-			return "Added manager with id = " + id;
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

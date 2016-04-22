@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.vendor;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.VendorDAO;
 import org.pulem3t.crm.entry.Vendor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class UpdateVendorController {
 		try {
 			vendorDAO.updateVendor(vendor);
 			logger.info("VENDORS: Updated vendor with id = " + vendor.getId());
-			return "Updated vendor with id = " + vendor.getId();
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

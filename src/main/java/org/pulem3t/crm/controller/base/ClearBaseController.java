@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.AdminDAO;
 import org.pulem3t.crm.dao.CustomerDAO;
 import org.pulem3t.crm.dao.ManagerDAO;
@@ -77,7 +78,10 @@ public class ClearBaseController {
 			Long clearTime = System.currentTimeMillis() - startTime;
 			
 			logger.info("BASE: Base cleared in " + clearTime + " ms");
-			return "Base cleared in " + clearTime + " ms";
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			o.put("ClearTime", clearTime);
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.orderItem;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.OrderItemDAO;
 import org.pulem3t.crm.entry.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class UpdateOrderItemController {
 		try {
 			orderItemDAO.updateOrderItem(orderItem);
 			logger.info("ORDER_ITEM: Update orderItem with id = " + orderItem.getId());
-			return "Updated orderItem with id = " + orderItem.getId();
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

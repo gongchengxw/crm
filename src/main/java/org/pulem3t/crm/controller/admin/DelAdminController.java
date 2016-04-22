@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.admin;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.AdminDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,9 @@ public class DelAdminController {
 		try {
 			adminDAO.delAdmin(id);
 			logger.info("ADMINS: Deleted admin with id = " + id);
-			return "Deleted admin with id = " + id;
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

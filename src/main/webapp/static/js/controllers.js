@@ -36,17 +36,26 @@ crmControllers.controller('OrdersViewCtrl', ['$scope', 'OrdersList',
         );
     }
 ]);
-crmControllers.controller('CustomersViewCtrl', ['$scope', 'CustomersList',
-    function CustomersViewCtrl($scope, CustomersList) {
+crmControllers.controller('CustomersViewCtrl', ['$scope', 'CustomersList', 'AddCustomer',
+    function CustomersViewCtrl($scope, CustomersList, AddCustomer) {
         $scope.mainViewName = "partials/customers.html";
-        CustomersList.get({},
-            function success(response) {
-                $scope.customersList = response[0];
-            },
-            function error(errorResponse) {
-                console.log("Error:" + JSON.stringify(errorResponse));
-            }
-        );
+        $scope.addCustomer = function(firstNameAdd, lastNameAdd, addressAdd) {
+            AddCustomer.add({firstName: firstNameAdd, lastName: lastNameAdd, address: addressAdd},
+                function success(response){
+                    getCustomers();
+                }
+            );
+        };
+        var getCustomers = function() {CustomersList.get({},
+                function success(response) {
+                    $scope.customersList = response[0];
+                },
+                function error(errorResponse) {
+                    console.log("Error:" + JSON.stringify(errorResponse));
+                }
+            );
+        };
+        getCustomers();
     }
 ]);
 crmControllers.controller('VendorsViewCtrl', ['$scope', 'VendorsList',

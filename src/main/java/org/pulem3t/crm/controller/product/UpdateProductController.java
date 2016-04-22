@@ -4,6 +4,7 @@
 package org.pulem3t.crm.controller.product;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.pulem3t.crm.dao.ProductDAO;
 import org.pulem3t.crm.entry.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,9 @@ public class UpdateProductController {
 		try {
 			productDAO.updateProduct(product);
 			logger.info("PRODUCTS: Updated product with id=" + product.getId());
-			return "Updated product with id = " + product.getId();
+			JSONObject o = new JSONObject();
+			o.put("Success", "true");
+			return o.toString(4);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

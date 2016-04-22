@@ -35,4 +35,15 @@
     .navbar-collapse .navbar-nav.navbar-right:last-child {
         margin-right: 0;
     }
+
+    .add-button
+    {
+        float: right;
+    }
+
+    .mainview-header
+    {
+        overflow: auto;
+        font-size:180%;
+    }
 }
