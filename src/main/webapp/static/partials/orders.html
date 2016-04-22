@@ -1,5 +1,5 @@
 <div class="panel panel-info">
-    <div class="panel-heading mainview-header">Orders<button class="btn btn-success add-button" data-toggle="modal" data-target="#addModal">Add Order</button></div>
+    <div class="panel-heading mainview-header">Orders<button class="btn btn-success add-button" data-toggle="modal" data-target="#addOrderModal">Add Order</button></div>
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
@@ -21,5 +21,39 @@
             </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div id="addOrderModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h4 class="modal-title">Add Order</h4>
+        </div>
+        <div class="modal-body">
+           <form id="addOrderForm" role="form">
+            <div class="form-group">
+              <label for="customerIdAdd">Customer ID:</label>
+              <input class="form-control" id="customerIdAdd" ng-model="customerIdAdd">
+            </div>
+            <div class="form-group">
+              <label for="managerIdAdd">Manager ID:</label>
+              <input class="form-control" id="managerIdAdd" ng-model="managerIdAdd">
+            </div>
+            <div class="form-group">
+                <label for="amountAdd">Amount:</label>
+              <input class="form-control" id="amountAdd" ng-model="amountAdd">
+            </div>  
+            <div class="form-group">
+                <label for="deliveryAddressAdd">Delivery Address:</label>
+              <input class="form-control" id="deliveryAddressAdd" ng-model="deliveryAddressAdd">
+            </div>               
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="addOrderButton" class="btn btn-success" data-dismiss="modal" ng-click="addOrder(customerIdAdd, managerIdAdd, amountAdd, deliveryAddressAdd)">Add Order</button>
+        </div>
+      </div>
     </div>
 </div>

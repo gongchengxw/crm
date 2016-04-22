@@ -1,5 +1,5 @@
 <div class="panel panel-info">
-    <div class="panel-heading mainview-header">Customers<button class="btn btn-success add-button" data-toggle="modal" data-target="#addModal">Add Customer</button></div>
+    <div class="panel-heading mainview-header">Customers<button class="btn btn-success add-button" data-toggle="modal" data-target="#addCustomerModal">Add Customer</button></div>
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<div id="addModal" class="modal fade" role="dialog">
+<div id="addCustomerModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -34,11 +34,11 @@
         <div class="modal-body">
            <form id="addCustomerForm" role="form">
             <div class="form-group">
-              <label for="firstName">First Name:</label>
+              <label for="firstNameAdd">First Name:</label>
               <input class="form-control" id="firstNameAdd" ng-model="firstNameAdd">
             </div>
             <div class="form-group">
-              <label for="lastName">Last Name:</label>
+              <label for="lastNameAdd">Last Name:</label>
               <input class="form-control" id="lastNameAdd" ng-model="lastNameAdd">
             </div>
             <div class="form-group">

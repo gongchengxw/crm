@@ -10,30 +10,48 @@ crmControllers.controller('StartViewCtrl', ['$scope',
         $scope.mainViewName = "partials/start.html";
     }
 ]);
-crmControllers.controller('ProductViewCtrl', ['$scope', 'ProductsList',
-    function ProductViewCtrl($scope, ProductsList) {
+crmControllers.controller('ProductViewCtrl', ['$scope', 'ProductsList', 'AddProduct',
+    function ProductViewCtrl($scope, ProductsList, AddProduct) {
         $scope.mainViewName = "partials/products.html";
-       ProductsList.get({},
-            function success(response) {
-                $scope.productsList = response[0];
-            },
-            function error(errorResponse) {
-                console.log("Error:" + JSON.stringify(errorResponse));
-            }
-        );
+        $scope.addProduct = function(nameAdd) {
+            AddProduct.add({name: nameAdd},
+                function success(response){
+                    getProducts();
+                }
+            );
+        };
+        var getProducts = function() {ProductsList.get({},
+                function success(response) {
+                    $scope.productsList = response[0];
+                },
+                function error(errorResponse) {
+                    console.log("Error:" + JSON.stringify(errorResponse));
+                }
+            );
+        };
+        getProducts();
     }
 ]);
-crmControllers.controller('OrdersViewCtrl', ['$scope', 'OrdersList',
-    function OrdersViewCtrl($scope, OrdersList) {
+crmControllers.controller('OrdersViewCtrl', ['$scope', 'OrdersList', 'AddOrder',
+    function OrdersViewCtrl($scope, OrdersList, AddOrder) {
         $scope.mainViewName = "partials/orders.html";
-        OrdersList.get({},
-            function success(response) {
-                $scope.ordersList = response[0];
-            },
-            function error(errorResponse) {
-                console.log("Error:" + JSON.stringify(errorResponse));
-            }
-        );
+        $scope.addOrder = function(customerIdAdd, managerIdAdd, amountAdd, deliveryAddressAdd) {
+            AddOrder.add({customerId: customerIdAdd, managerId: managerIdAdd, amount: amountAdd, deliveryAddress: deliveryAddressAdd},
+                function success(response){
+                    getOrders();
+                }
+            );
+        };
+        var getOrders = function() {OrdersList.get({},
+                function success(response) {
+                    $scope.ordersList = response[0];
+                },
+                function error(errorResponse) {
+                    console.log("Error:" + JSON.stringify(errorResponse));
+                }
+            );
+        };
+        getOrders();
     }
 ]);
 crmControllers.controller('CustomersViewCtrl', ['$scope', 'CustomersList', 'AddCustomer',
@@ -58,16 +76,25 @@ crmControllers.controller('CustomersViewCtrl', ['$scope', 'CustomersList', 'AddC
         getCustomers();
     }
 ]);
-crmControllers.controller('VendorsViewCtrl', ['$scope', 'VendorsList',
-    function VendorsViewCtrl($scope, VendorsList) {
+crmControllers.controller('VendorsViewCtrl', ['$scope', 'VendorsList', 'AddVendor',
+    function VendorsViewCtrl($scope, VendorsList, AddVendor) {
         $scope.mainViewName = "partials/vendors.html";
-        VendorsList.get({},
-            function success(response) {
-                $scope.vendorsList = response[0];
-            },
-            function error(errorResponse) {
-                console.log("Error:" + JSON.stringify(errorResponse));
-            }
-        );
+        $scope.addVendor = function(firstNameAdd, lastNameAdd) {
+            AddVendor.add({firstName: firstNameAdd, lastName: lastNameAdd},
+                function success(response){
+                    getVendors();
+                }
+            );
+        };
+        var getVendors = function() {VendorsList.get({},
+                function success(response) {
+                    $scope.vendorsList = response[0];
+                },
+                function error(errorResponse) {
+                    console.log("Error:" + JSON.stringify(errorResponse));
+                }
+            );
+        };
+        getVendors();
     }
 ]);

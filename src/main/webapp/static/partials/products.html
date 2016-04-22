@@ -1,5 +1,5 @@
 <div class="panel panel-info">
-    <div class="panel-heading mainview-header">Products<button class="btn btn-success add-button">Add Product</button></div>
+    <div class="panel-heading mainview-header">Products<button class="btn btn-success add-button" data-toggle="modal" data-target="#addProductModal">Add Product</button></div>
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
@@ -21,5 +21,27 @@
             </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div id="addProductModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">x</button>
+          <h4 class="modal-title">Add Product</h4>
+        </div>
+        <div class="modal-body">
+           <form id="addProductForm" role="form">
+            <div class="form-group">
+              <label for="nameAdd">Product Name:</label>
+              <input class="form-control" id="nameAdd" ng-model="nameAdd">
+            </div>        
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="addProductButton" class="btn btn-success" data-dismiss="modal" ng-click="addProduct(nameAdd)">Add Product</button>
+        </div>
+      </div>
     </div>
 </div>

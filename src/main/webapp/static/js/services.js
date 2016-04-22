@@ -37,6 +37,30 @@ crmServices.factory('AddCustomer',['$resource',
     }
 ]);
 
+crmServices.factory('AddOrder',['$resource',
+    function($resource) {
+        return $resource("orders/addOrder", {}, {
+            add: {method:'POST', responseType:'json', cache:false, isArray: false}
+        });
+    }
+]);
+
+crmServices.factory('AddVendor',['$resource',
+    function($resource) {
+        return $resource("vendors/addVendor", {}, {
+            add: {method:'POST', responseType:'json', cache:false, isArray: false}
+        });
+    }
+]);
+
+crmServices.factory('AddProduct',['$resource',
+    function($resource) {
+        return $resource("products/addProduct", {}, {
+            add: {method:'POST', responseType:'json', cache:false, isArray: false}
+        });
+    }
+]);
+
 crmServices.factory('OrdersList',['$resource',
     function($resource) {
         return $resource("orders/getOrders", {}, {
